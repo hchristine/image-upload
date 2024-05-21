@@ -1,0 +1,60 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+"""Payload that requires createProject mutation"""
+input CreateProjectInput {
+  images: [String!]!
+  text: String!
+}
+
+union CreateProjectResult = Project | ValidationError
+
+"""Payload that requires createUser mutation"""
+input CreateUserInput {
+  email: String!
+  fullname: String!
+  password: String!
+}
+
+union CreateUserResultUnion = User
+
+type Mutation {
+  createProject(input: CreateProjectInput!): CreateProjectResult!
+  createUser(input: CreateUserInput!): CreateUserResultUnion!
+  signIn(input: SignInInput!): SignInSuccess!
+}
+
+type Project {
+  id: String!
+  images: [String!]!
+  qrUrl: String!
+  text: String!
+  userId: String!
+}
+
+type Query {
+  hello: String!
+}
+
+"""Payload for user sign in"""
+input SignInInput {
+  email: String!
+  password: String!
+}
+
+type SignInSuccess {
+  token: String!
+}
+
+"""This object represents user data"""
+type User {
+  email: String!
+  fullname: String!
+  id: String!
+  password: String!
+}
+
+type ValidationError {
+  fields: [String!]!
+}
